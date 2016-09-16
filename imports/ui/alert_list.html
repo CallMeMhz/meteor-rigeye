@@ -1,0 +1,45 @@
+<template name="alertList">
+	<div class="container">
+		<div class="page-header">
+			<h1>Alert
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary" id="addAlert">Add</button>
+					<button class="btn btn-primary" id="toggleAlert">Toggle</button>
+					<button class="btn btn-danger" id="deleteAlert">Delete</button>
+				</div>
+			</h1>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td style="width: 32px;"><input type="checkbox" id="checkAll"></td>
+					<td>状态</td>
+					<td>名称</td>
+					<td>创建人</td>
+					<td>指标</td>
+					<td>TAGS</td>
+					<td>最后触发数值</td>
+					<td>最后触发时间</td>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each alerts}}
+					{{> alertItem}}
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</template>
+
+<template name="alertItem">
+				<tr>
+					<td><input type="checkbox" name=""></td>
+					<td><span class="label label-{{statusToLevel status}}">{{status}}</span></td>
+					<td>{{name}}</td>
+					<td>{{createdBy}}</td>
+					<td>system.{{module}}</td>
+					<td><span class="label label-default">暂无标签</span></td>
+					<td>{{latestData}}</td>
+					<td>{{prettyTime latestTime}}</td>
+				</tr>
+</template>

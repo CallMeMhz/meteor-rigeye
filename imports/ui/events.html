@@ -1,0 +1,24 @@
+<template name="events">
+	<div class="container">
+		<div class="page-header">
+			<h1>Events</h1>
+		</div>
+		{{#each events}}
+			{{> event}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="event">
+	<div class="panel panel-{{level}}">
+		<div class="panel-heading panel">
+			{{eName}}
+		</div>
+		<div class="panel-body">
+			{{content}}
+		</div>
+		<div class="panel-footer">
+			<strong>最后更新时间</strong>:{{prettyTime updatedAt}}&nbsp;<strong>创建时间</strong>:{{prettyTime createdAt}}
+		</div>
+	</div>
+</template>
