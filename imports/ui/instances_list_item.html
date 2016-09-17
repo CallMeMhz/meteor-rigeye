@@ -2,7 +2,7 @@
   <tr>
     <td><a href="#">{{node}}</a></td>
     <td><span class="label label-default">{{os}}</span></td>
-    <td><span class="label {{#if isWorking status}}label-success{{else}}label-default{{/if}}">{{status}}</span></td>
+    <td><span class="label {{#if isWorking status}}label-success{{else}}label-default{{/if}}">{{#if isWorking status}}MONITORING{{else}}LOSE SIGNAL{{/if}}</span></td>
     <td>
       <div class="progress" style="margin-bottom:0">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{#if isWorking status}}{{getLatestData cpu_percent}}{{else}}NaN{{/if}}" aria-valuemin="0" aria-valuemax="100" style="width: {{#if isWorking status}}{{getLatestData cpu_percent}}{{else}}NaN{{/if}}%; color: black;">

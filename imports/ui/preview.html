@@ -4,7 +4,7 @@
 			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">告警统计</h3>
+						<h3 class="panel-title">Events Statistics</h3>
 					</div>
 					<div class="panel-body">
 						{{> previewWarnStatistics}}
@@ -14,7 +14,7 @@
 			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">最新消息 <a href="/events" class="pull-right">more</a></h3>
+						<h3 class="panel-title">Latest Events <a href="/events" class="pull-right">more</a></h3>
 					</div>
 					<div class="panel-body">
 						{{> previewEventsList}}
@@ -26,7 +26,7 @@
 			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">可用性一览</h3>
+						<h3 class="panel-title">Available Instances Preview</h3>
 					</div>
 					<div class="panel-body">
 						{{> previewAvailableList}}
@@ -36,7 +36,7 @@
 			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">TopN - 网络接口接收速率</h3>
+						<h3 class="panel-title">TopN - Network Interface Recv Rate</h3>
 					</div>
 					<div class="panel-body">
 						{{> previewNetworkStatus}}
@@ -56,9 +56,9 @@
 		<table class="table table-striped" style="margin-bottom: 0">
 			<thead>
 				<tr>
-					<th>级别</th>
-					<th>告警内容</th>
-					<th>告警时间</th>
+					<th>Level</th>
+					<th>Content</th>
+					<th>Time</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,7 +72,7 @@
 			</tbody>
 		</table>
 	{{else}}
-		<div class="alert" role="alert">运行良好，还没有任何警告通知</div>
+		<div class="alert" role="alert">Work fine, there is no any warning notices.</div>
 	{{/if}}
 </template>
 
@@ -81,11 +81,11 @@
 		<table class="table table-striped" style="margin-bottom: 0">
 			<thead>
 				<tr>
-					<th>可用性</th>
-					<th>资源名称</th>
-					<th>IP地址</th>
-					<th>资源类型</th>
-					<th>采集时间</th>
+					<th>Available</th>
+					<th>Name</th>
+					<th>IP</th>
+					<th>Type</th>
+					<th>Collected Time</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -95,7 +95,7 @@
 			</tbody>
 		</table>
 	{{else}}
-		<div class="alert" role="alert">快来添加第一个实例机吧～</div>
+		<div class="alert" role="alert">No instances here.</div>
 	{{/if}}
 </template>
 
@@ -103,7 +103,7 @@
 	<tr>
 		<td style="color: {{#if isWorking status}}green{{else}}red{{/if}}"><span class="glyphicon glyphicon-{{#if isWorking status}}play{{else}}stop{{/if}}"></span></td>
 		<td>{{node}}</td>
-		<td>{{ipAddress}}</td>
+		<td>{{ip}}</td>
 		<td>{{os}}</td>
 		<td>{{prettyTime updatedAt}}</td>
 	</tr>

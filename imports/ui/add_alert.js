@@ -13,7 +13,12 @@ Template.addAlert.helpers({
 });
 
 Template.addAlert.events({
-	'click #addAlert'(evt, template) {
+	'submit #addAlert'(evt, template) {
+		evt.preventDefault();
+		if (!template.find('#instance').value) {
+			alert('No instance is selected');
+			return;
+		}
 		Alerts.insert({
 			'name': template.find('#name').value,
 			'instanceId': template.find('#instance').value,

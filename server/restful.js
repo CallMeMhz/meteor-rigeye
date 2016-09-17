@@ -11,9 +11,16 @@ var postRouters = Picker.filter(function (req, res) {
 });
 
 postRouters.route('/restful/instance', function (params, req, res, next) {
-  instance = Instances.insert({'node': req.body.node, 'os': req.body.os});
   res.setHeader('Content-Type','text/plain');
-  res.end(instance);
+  if (req.body.token) {
+    var instance = Instances.findOne({ '_id': req.body.token });
+  }
+  if (instance) {
+    res.end(instance._id);
+  } else {
+    var instance = Instances.insert({'node': req.body.node, 'os': req.body.os});
+    res.end(instance);
+  }
 });
 
 var putRouters = Picker.filter(function (req, res) {
@@ -26,6 +33,7 @@ putRouters.route('/restful/instance', function (params, req, res, next) {
   if (instance) {
     Instances.update(instance._id, {
       $set: {
+        'ip': req.body.ip,
         'updatedAt': req.body.updatedAt,
       },
       $push: {
